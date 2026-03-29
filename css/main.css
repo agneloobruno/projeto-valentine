@@ -556,84 +556,68 @@ button:focus {
     line-height: 1.65;
 }
 
-#nossas-musicas h2 {
-    margin-top: 2.8rem;
-    margin-bottom: 1.2rem;
-    color: var(--vinho-escuro);
-}
-
-.songs-grid {
-    margin-top: 2.4rem;
+#nossas-musicas {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+    gap: 2.2rem;
 }
 
-.song-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    min-height: 220px;
-    padding: 2.2rem 2rem;
-    border-radius: 16px;
-    border: 1px solid rgba(201, 169, 110, 0.45);
-    background: #FFF5F0;
-    box-shadow: 0 10px 22px rgba(139, 26, 74, 0.12);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+#nossas-musicas #divisor {
+    margin: 0;
 }
 
-.song-thumb {
+.music-main-card {
+    background: #8B1A4A;
+    border-radius: 20px;
+    padding: 2.4rem;
+    box-shadow: 0 20px 34px rgba(95, 17, 50, 0.3);
+    color: #FFF5F0;
+}
+
+.music-main-card .fa-heart {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #FFF5F0;
+}
+
+.music-main-title {
+    margin: 0;
+    color: #FFF5F0;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.3rem, 2.8vw, 3.2rem);
+}
+
+.music-main-artist {
+    margin: 0.8rem 0 1.8rem;
+    color: rgba(255, 245, 240, 0.9);
+    font-size: 1.6rem;
+    letter-spacing: 0.03em;
+}
+
+.music-playlist-card {
+    background: #fff;
+    border: 1px solid rgba(201, 169, 110, 0.4);
+    border-radius: 20px;
+    padding: 1.6rem;
+    box-shadow: 0 12px 24px rgba(139, 26, 74, 0.14);
+}
+
+.spotify-embed-wrap {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.spotify-embed-wrap iframe {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid rgba(201, 169, 110, 0.45);
-    margin-bottom: 1.4rem;
+    border: 0;
 }
 
-.song-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 28px rgba(139, 26, 74, 0.2);
-}
-
-.song-card .fa-music {
-    font-size: 2.2rem;
+.music-outro {
+    margin: 0;
+    text-align: center;
     color: var(--vinho);
-    margin-bottom: 1.2rem;
-}
-
-.song-title {
-    margin: 0 0 0.6rem;
-    color: var(--vinho);
-    font-size: clamp(2rem, 2.2vw, 2.7rem);
-}
-
-.song-artist {
-    margin: 0 0 1.6rem;
-    color: var(--texto-suave);
-    font-size: 1.6rem;
-}
-
-.song-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: auto;
-    min-height: 4.2rem;
-    padding: 0 1.8rem;
-    border-radius: 999px;
-    border: 1px solid var(--dourado);
-    background: linear-gradient(120deg, rgba(201, 169, 110, 0.98), rgba(232, 160, 191, 0.95));
-    color: var(--vinho-escuro) !important;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-}
-
-.song-link:hover,
-.song-link:focus {
-    color: var(--vinho) !important;
+    font-size: 1.7rem;
+    line-height: 1.7;
 }
 
 #mensagem-especial {
@@ -1018,8 +1002,12 @@ button:focus {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .songs-grid {
-        grid-template-columns: 1fr;
+    .music-main-card {
+        padding: 2rem 1.6rem;
+    }
+
+    .music-playlist-card {
+        padding: 1.2rem;
     }
 
     .timeline::before {

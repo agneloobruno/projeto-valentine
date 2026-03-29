@@ -1,42 +1,35 @@
-class MobileNavbar {
-    constructor(mobileMenu, navList, navLinks) {
-        this.mobileMenu = document.querySelector(mobileMenu);
-        this.navList = document.querySelector(navList);
-        this.navLinks = document.querySelectorAll(navLinks);
-        this.activeClass = "active";
+(function () {
+    const header = document.getElementById("header");
+    const toggle = document.querySelector(".header-menu-toggle");
+    const nav = document.getElementById("header-nav-wrap");
+    const navLinks = document.querySelectorAll("#header-nav-wrap .header-main-nav a");
 
-        this.handleClick = this.handleClick.bind(this);
+    if (!header || !toggle || !nav) {
+        return;
     }
 
-    animateLinks() {
-        this.navLinks.forEach((link, index) => {
-            link.style.animation
-                ? (link.style.animation = "")
-                : (link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`);
-        });
+    function closeMenu() {
+        header.classList.remove("nav-open");
+        toggle.classList.remove("active");
+        toggle.setAttribute("aria-expanded", "false");
     }
 
-    handleClick() {
-        this.navList.classList.toggle(this.activeClass);
-        this.mobileMenu.classList.toggle(this.activeClass);
-        this.animateLinks();
+    function toggleMenu(event) {
+        event.preventDefault();
+        const isOpen = header.classList.toggle("nav-open");
+        toggle.classList.toggle("active", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
     }
 
-    addClickEvent() {
-        this.mobileMenu.addEventListener("click", this.handleClick);
-    }
+    toggle.addEventListener("click", toggleMenu);
 
-    init() {
-        if (this.mobileMenu) {
-            this.addClickEvent();
+    navLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+            closeMenu();
         }
-        return this;
-    }
-}
-
-const mobileNavbar = new MobileNavbar(
-    ".mobile-menu",
-    ".nav-list",
-    ".nav-list li",
-);
-mobileNavbar.init();
+    });
+})();
